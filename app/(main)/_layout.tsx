@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 
-import { Drawer } from 'expo-router/drawer';
-import React, { useEffect, useState } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Dimensions } from 'react-native';
-import { getRole } from '../utils/auth';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useRouter } from 'expo-router';
+import { Drawer } from 'expo-router/drawer';
+import React, { useEffect, useState } from 'react';
+import { Dimensions } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { getRole } from '../utils/auth';
 
 export default function MainLayout() {
   // NOTE: This layout currently reads a role from AsyncStorage using `getRole()` and

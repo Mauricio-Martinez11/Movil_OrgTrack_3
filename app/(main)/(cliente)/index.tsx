@@ -1,14 +1,32 @@
+import { useRouter } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { clearAuth } from "../../utils/auth";
 
 export default function ClienteHome() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await clearAuth();
+    router.replace("/(auth)/login");
+  };
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text style={{ fontSize: 22, marginBottom: 12 }}>Cliente - Inicio</Text>
-      {/* Link to transportista removed — client users should not see transportista screens in Drawer
-          NOTE: this was removed as part of a temporary role-based navigation demo. When
-          backend-auth and roles are available, restore or adjust navigation depending
-          on server-side permissions. */}
+      
+      <TouchableOpacity
+        onPress={handleLogout}
+        style={{
+          marginTop: 20,
+          backgroundColor: "#ef4444",
+          paddingHorizontal: 24,
+          paddingVertical: 12,
+          borderRadius: 8,
+        }}
+      >
+        <Text style={{ color: "#fff", fontWeight: "bold" }}>Cerrar Sesión</Text>
+      </TouchableOpacity>
     </View>
   );
 }
